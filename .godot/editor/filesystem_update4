@@ -1,2 +1,7 @@
 res://default_env.tres
+res://scenes/NewShip.tscn
+res://scenes/NewLevel.tscn
+res://scenes/NewPlatform.tscn
 res://scenes/MainLevel.tscn
+res://scenes/NewPlatform.gd
+res://scenes/NewObjectiveArea.gd

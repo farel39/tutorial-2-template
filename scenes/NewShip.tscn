@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c2fth2txgmvvk"]
+
+[ext_resource type="Texture2D" uid="uid://c25ibm3qb1em6" path="res://assets/playerShipUpgraded.png" id="1_wrxsj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_583vt"]
+size = Vector2(166, 186)
+
+[node name="NewShip" type="RigidBody2D" unique_id=247348376]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=982520367]
+texture = ExtResource("1_wrxsj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1628153690]
+position = Vector2(-5, -6)
+shape = SubResource("RectangleShape2D_583vt")

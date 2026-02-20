@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://brij03583fg07"]
+
+[ext_resource type="PackedScene" uid="uid://c2fth2txgmvvk" path="res://scenes/NewShip.tscn" id="1_053tu"]
+[ext_resource type="Script" uid="uid://d20fh22lr2o0j" path="res://scenes/NewPlatform.gd" id="2_th476"]
+[ext_resource type="PackedScene" uid="uid://c11yg2ukkbgla" path="res://scenes/NewPlatform.tscn" id="3_5bd2b"]
+[ext_resource type="Script" uid="uid://j3publfq6x7p" path="res://scenes/NewObjectiveArea.gd" id="4_iuvrt"]
+[ext_resource type="Texture2D" uid="uid://dd4p8ln7x2je1" path="res://assets/SpaceBackground.png" id="5_xev8i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06hvf"]
+size = Vector2(138.75, 79)
+
+[node name="NewLevel" type="Node2D" unique_id=1296117521]
+
+[node name="NewShip" parent="." unique_id=247348376 instance=ExtResource("1_053tu")]
+position = Vector2(593, 330)
+
+[node name="FlyingPlatform" type="Node2D" parent="." unique_id=1483666861]
+script = ExtResource("2_th476")
+
+[node name="NewPlatform" parent="FlyingPlatform" unique_id=1552765346 instance=ExtResource("3_5bd2b")]
+position = Vector2(588, 535)
+
+[node name="NewObjectiveArea" type="Area2D" parent="." unique_id=41769163 node_paths=PackedStringArray("win_message")]
+script = ExtResource("4_iuvrt")
+win_message = NodePath("../CanvasLayer/Label")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NewObjectiveArea" unique_id=1005948647]
+position = Vector2(590, 47)
+shape = SubResource("RectangleShape2D_06hvf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838344421]
+z_index = -1
+position = Vector2(581.99994, 314.99997)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_xev8i")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1584076737]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1900953573]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30
+text = "Objective Reached!"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="NewObjectiveArea" to="NewObjectiveArea" method="_on_ObjectiveArea_body_entered"]
